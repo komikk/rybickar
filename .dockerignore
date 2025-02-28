@@ -1,0 +1,5 @@
+# Ignore PowerShell scripts
+*.ps1
+
+# Ignore configuration files
+*.config
