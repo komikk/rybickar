@@ -6,8 +6,13 @@ const { urlsToCheck, flagTimeout } = require('./config');
 let flaggedUrls = new Set();
 
 function getName(index) {
-    return index === 0 ? 'Samuela' : 'Mateja';
+    return index === 0 ? 'Samuel' : 'Matej';
 }
+
+const mail = {
+    subject: `Volný termín na náhradu pre `,
+    text: 'Objavil sa nový termín na náhradu plávania'
+};
 
 function checkUrls() {
     logMessage('info', `Checking URLs`);
@@ -24,7 +29,7 @@ function checkUrls() {
                 response.on('end', () => {
                     if (data.includes("Rezervova")) {
                         logAvailableSlot(`${getName(index)} has an available slot!`);
-                        sendEmail(index, getName(index));
+                        sendEmail(mail.subject + getName(index), mail.text);
 
                         flaggedUrls.add(index);
                         setTimeout(() => {

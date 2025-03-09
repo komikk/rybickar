@@ -12,12 +12,12 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-function sendEmail(index, name) {
+function sendEmail(subject, text) {
     const mailOptions = {
-        from: authUser,
+        from: 'majtan.juraj@hkmanin.sk',
         to: 'komikk123@gmail.com;majtan.juraj@hkmanin.sk;m.cickanova@gmail.com',
-        subject: `Volný termín na náhradu pre ${name}`,
-        text: 'Objavil sa nový termín na náhradu plávania'
+        subject,
+        text
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
